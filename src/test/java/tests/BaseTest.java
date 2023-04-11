@@ -19,6 +19,31 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class BaseTest {
 
+  protected final static int DEMO_1 = 1;
+  protected final static int DEMO_2 = 2;
+  //private String demoSelection;
+  private DesiredCapabilities capabilities = new DesiredCapabilities();
+  
+  public BaseTest(int demoSelection) {
+    super();
+    capabilities.setCapability("platformName", "Android");
+    capabilities.setCapability("platformVersion", "8.0.0");
+    capabilities.setCapability("deviceName", "emulator-5554");
+    switch (demoSelection) {
+      case DEMO_1:
+        capabilities.setCapability("appPackage", "com.kazimasum.cartdemo");
+        capabilities.setCapability("appActivity", "MainActivity");
+        break;
+      case DEMO_2:        
+        capabilities.setCapability("appPackage", "com.swaglabsmobileapp");
+        capabilities.setCapability("appActivity", "MainActivity");
+        break;
+
+      default:
+        break;
+    }
+  }
+
   AppiumDriver<MobileElement> driver;
 
   @BeforeSuite
@@ -28,13 +53,15 @@ public class BaseTest {
 
     URL url = new URL(URL_STRING);
 
-    DesiredCapabilities capabilities = new DesiredCapabilities();
+    //DesiredCapabilities capabilities = new DesiredCapabilities();
     // local
-    /*capabilities.setCapability("platformName", "Android");
-    capabilities.setCapability("platformVersion", "8.0.0");
-    capabilities.setCapability("deviceName", "emulator-5554");
-    capabilities.setCapability("appPackage", "com.kazimasum.cartdemo");
-    capabilities.setCapability("appActivity", "MainActivity");*/
+    /*
+     * capabilities.setCapability("platformName", "Android");
+     * capabilities.setCapability("platformVersion", "8.0.0");
+     * capabilities.setCapability("deviceName", "emulator-5554");
+     * capabilities.setCapability("appPackage", "com.kazimasum.cartdemo");
+     * capabilities.setCapability("appActivity", "MainActivity");
+     */
     //
 
     driver = new AndroidDriver<MobileElement>(url, capabilities);
@@ -59,5 +86,14 @@ public class BaseTest {
         System.getProperty("appium.screenshots.dir", System.getProperty("java.io.tmpdir", ""));
     File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
     return screenshot.renameTo(new File(screenshotDirectory, String.format("%s.png", name)));
+  }
+  
+  protected void waitForSeconds(int seconds) {
+    try {
+      Thread.sleep(seconds*1000);
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 }

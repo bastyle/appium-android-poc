@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]" parallel="none">
   <test name="Default test(failed)" parallel="none">
     <classes>
-      <class name="tests.AppTest">
+      <class name="tests.AppTest2">
         <methods>
-          <include name="enterData" invocation-numbers="0"/>
           <include name="setUpAppium"/>
           <include name="tearDownAppium"/>
-          <include name="checkShoppingCart"/>
+          <include name="products"/>
         </methods>
-      </class> <!-- tests.AppTest -->
+      </class> <!-- tests.AppTest2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
