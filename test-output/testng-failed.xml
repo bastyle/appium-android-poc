@@ -5,8 +5,10 @@
     <classes>
       <class name="tests.AppTest">
         <methods>
-          <include name="enterData"/>
+          <include name="enterData" invocation-numbers="0"/>
           <include name="setUpAppium"/>
+          <include name="tearDownAppium"/>
+          <include name="checkShoppingCart"/>
         </methods>
       </class> <!-- tests.AppTest -->
     </classes>
