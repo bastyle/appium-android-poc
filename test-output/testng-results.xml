@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="8228" started-at="2023-04-11T02:12:01Z" finished-at="2023-04-11T02:12:09Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="8228" started-at="2023-04-11T02:12:01Z" finished-at="2023-04-11T02:12:09Z">
+      <class name="cl.sermaluc.factory.poc.AppTest">
+        <test-method status="PASS" signature="setUpAppium()[pri:0, instance:cl.sermaluc.factory.poc.AppTest@7181ae3f]" name="setUpAppium" is-config="true" duration-ms="4200" started-at="2023-04-10T22:11:56Z" finished-at="2023-04-10T22:12:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpAppium -->
+        <test-method status="PASS" signature="enterData(int, java.lang.String, int, int)[pri:0, instance:cl.sermaluc.factory.poc.AppTest@7181ae3f]" name="enterData" duration-ms="8222" started-at="2023-04-10T22:12:01Z" data-provider="getData" finished-at="2023-04-10T22:12:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[13246]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[First product]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[1500]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- enterData -->
+        <test-method status="PASS" signature="tearDownAppium()[pri:0, instance:cl.sermaluc.factory.poc.AppTest@7181ae3f]" name="tearDownAppium" is-config="true" duration-ms="97" started-at="2023-04-10T22:12:09Z" finished-at="2023-04-10T22:12:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownAppium -->
+      </class> <!-- cl.sermaluc.factory.poc.AppTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
