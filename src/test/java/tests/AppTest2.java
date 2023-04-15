@@ -27,11 +27,8 @@ public class AppTest2 extends BaseTest {
   }
 
   private MobileElement seeProductDetail(final String productXpath, final String xpathToValidate) {
-    // driver.findElementByXPath(id).click();
     super.getByXpath(productXpath, true);
     waitForSeconds(1);
-    // driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"test-BACK TO
-    // PRODUCTS\"]/android.widget.TextView").click();
     MobileElement validate = super.getByXpath(xpathToValidate, false);
     takeScreenshot("product details.");
     super.getByXpath(
@@ -39,37 +36,6 @@ public class AppTest2 extends BaseTest {
         true);
     return validate;
   }
-
-  // @Test
-  public void incorrectLogin() {
-    By message = genericLogin("fakeUser", "fakePassword",
-        "//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView");
-    Assert.assertNotNull(message, "Login incorrect!");
-  }
-
-  @Test(priority = 1)
-  public void login() {
-    setText(By.xpath("//android.widget.EditText[@content-desc=\"test-Username\"]"),
-        "standard_user");
-    setText(By.xpath("//android.widget.EditText[@content-desc=\"test-Password\"]"), "secret_sauce");
-    waitForSeconds(1);
-    driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]")).click();
-    waitForSeconds(3);
-    takeScreenshot("login");
-    By landingViewProductsText = By.xpath(
-        "//android.view.ViewGroup[@content-desc=\"test-Cart drop zone\"]/android.view.ViewGroup/android.widget.TextView");
-    Assert.assertNotNull(landingViewProductsText, "User successfully logged in!");
-  }
-
-  // @Test(priority = 2)
-  public void checkProductDetails() {
-    MobileElement validate = seeProductDetail(
-        "(//android.widget.TextView[@content-desc=\"test-Item title\"])[1]",
-        "//android.view.ViewGroup[@content-desc=\"test-Image Container\"]/android.widget.ImageView");
-    waitForSeconds(1);
-    Assert.assertNotNull(validate, "Details not displayed.");
-  }
-
 
   public void addProduct(final int position, final int swipes) {
     System.out.println("adding prod. " + position);
@@ -100,15 +66,45 @@ public class AppTest2 extends BaseTest {
     System.out.println("back..");
   }
 
+  // @Test
+  public void incorrectLogin() {
+    By message = genericLogin("fakeUser", "fakePassword",
+        "//android.view.ViewGroup[@content-desc=\"test-Error message\"]/android.widget.TextView");
+    Assert.assertNotNull(message, "Login incorrect!");
+  }
+
+  @Test(priority = 1)
+  public void login() {
+    setText(By.xpath("//android.widget.EditText[@content-desc=\"test-Username\"]"),
+        "standard_user");
+    setText(By.xpath("//android.widget.EditText[@content-desc=\"test-Password\"]"), "secret_sauce");
+    waitForSeconds(1);
+    driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]")).click();
+    waitForSeconds(3);
+    takeScreenshot("login");
+    By landingViewProductsText = By.xpath(
+        "//android.view.ViewGroup[@content-desc=\"test-Cart drop zone\"]/android.view.ViewGroup/android.widget.TextView");
+    Assert.assertNotNull(landingViewProductsText, "User successfully logged in!");
+  }
+
+  // @Test(priority = 2)
+  public void checkProductDetails() {
+    MobileElement validate = seeProductDetail(
+        "(//android.widget.TextView[@content-desc=\"test-Item title\"])[1]",
+        "//android.view.ViewGroup[@content-desc=\"test-Image Container\"]/android.widget.ImageView");
+    swipe(0);
+    waitForSeconds(1);
+    Assert.assertNotNull(validate, "Details not displayed.");
+  }
+
   @Test(priority = 3)
   public void addProducts() {
     System.out.println("adding products...");
     addProduct(2, 0);
     addProduct(1, 1);
-
-//    super.swipe(2);
-//    addProduct(2, 3);
-//    addProduct(1, 4);
+    super.swipe(2);
+    addProduct(2, 3);
+    addProduct(1, 4);
 
   }
 
@@ -131,35 +127,60 @@ public class AppTest2 extends BaseTest {
   }
 
 
+  @Test(priority = 4)
+  public void removeProduct() {
+    driver.findElementByXPath(
+        "//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup/android.view.ViewGroup")
+        .click();
+    takeScreenshot("before remove");
+    MobileElement el8 = (MobileElement) driver.findElementByXPath(
+        "//android.view.ViewGroup[@content-desc=\"test-REMOVE\"]/android.widget.TextView");
+    Assert.assertNotNull(el8);
+    el8.click();
+    waitForSeconds(1);
+    takeScreenshot("after remove");    
+  }
+
   @Test(priority = 5)
-  public void checkout() {    
+  public void checkout() {
     System.out.println("checkout...");
     driver.findElementByXPath(
-        "//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup/android.widget.ImageView").click();
-    //el38.click();
+        "//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup/android.widget.ImageView")
+        .click();
+    // el38.click();
     System.out.println("shopping cart.");
     swipe(4);
     System.out.println("after swipes");
-    driver.findElementByXPath(
-        "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]/android.widget.TextView").click();
-    
+    driver
+        .findElementByXPath(
+            "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]/android.widget.TextView")
+        .click();
+
     System.out.println("click checkout done");
     driver.findElementByAccessibilityId("test-First Name").sendKeys("Bastian");
     driver.findElementByAccessibilityId("test-Last Name").sendKeys("Bastias");
     driver.findElementByAccessibilityId("test-Zip/Postal Code").sendKeys("MN13W5");
     System.out.println("data added.");
-    driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"test-CONTINUE\"]/android.widget.TextView").click();
+    driver
+        .findElementByXPath(
+            "//android.view.ViewGroup[@content-desc=\"test-CONTINUE\"]/android.widget.TextView")
+        .click();
     System.out.println("continue done");
     swipe(4);
     System.out.println("after 2 swipes");
     super.takeScreenshot("checkOut init.");
-    driver.findElementByXPath(
-        "//android.view.ViewGroup[@content-desc=\"test-FINISH\"]/android.widget.TextView").click();
+    driver
+        .findElementByXPath(
+            "//android.view.ViewGroup[@content-desc=\"test-FINISH\"]/android.widget.TextView")
+        .click();
     System.out.println("finishg done");
     super.takeScreenshot("checkOut finish.");
     super.takeScreenshot("finish.");
     super.waitForSeconds(3);
-    driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"test-BACK HOME\"]/android.widget.TextView").click();
+    driver
+        .findElementByXPath(
+            "//android.view.ViewGroup[@content-desc=\"test-BACK HOME\"]/android.widget.TextView")
+        .click();
   }
 
 
