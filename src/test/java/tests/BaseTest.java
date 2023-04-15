@@ -21,9 +21,9 @@ public class BaseTest {
 
   protected final static int DEMO_1 = 1;
   protected final static int DEMO_2 = 2;
-  //private String demoSelection;
+  // private String demoSelection;
   private DesiredCapabilities capabilities = new DesiredCapabilities();
-  
+
   public BaseTest(int demoSelection) {
     super();
     capabilities.setCapability("platformName", "Android");
@@ -34,7 +34,7 @@ public class BaseTest {
         capabilities.setCapability("appPackage", "com.kazimasum.cartdemo");
         capabilities.setCapability("appActivity", "MainActivity");
         break;
-      case DEMO_2:        
+      case DEMO_2:
         capabilities.setCapability("appPackage", "com.swaglabsmobileapp");
         capabilities.setCapability("appActivity", "MainActivity");
         break;
@@ -53,7 +53,7 @@ public class BaseTest {
 
     URL url = new URL(URL_STRING);
 
-    //DesiredCapabilities capabilities = new DesiredCapabilities();
+    // DesiredCapabilities capabilities = new DesiredCapabilities();
     // local
     /*
      * capabilities.setCapability("platformName", "Android");
@@ -87,10 +87,19 @@ public class BaseTest {
     File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
     return screenshot.renameTo(new File(screenshotDirectory, String.format("%s.png", name)));
   }
-  
+
+  protected MobileElement getByXpath(final String xpath, final boolean click) {
+    MobileElement element = driver.findElementByXPath(xpath);
+    if (click) {
+      waitForSeconds(1);
+      element.click();
+    }
+    return element;
+  }
+
   protected void waitForSeconds(int seconds) {
     try {
-      Thread.sleep(seconds*1000);
+      Thread.sleep(seconds * 1000);
     } catch (InterruptedException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
