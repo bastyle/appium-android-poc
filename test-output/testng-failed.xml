@@ -6,8 +6,8 @@
       <class name="tests.AppTest2">
         <methods>
           <include name="setUpAppium"/>
-          <include name="testSwipe"/>
           <include name="tearDownAppium"/>
+          <include name="checkout"/>
         </methods>
       </class> <!-- tests.AppTest2 -->
     </classes>

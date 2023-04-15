@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeSuite;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 
 public class BaseTest {
@@ -101,8 +102,18 @@ public class BaseTest {
     try {
       Thread.sleep(seconds * 1000);
     } catch (InterruptedException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
+  }
+  
+  protected void swipe(final int times) {
+    int countAux = times;
+    do {
+      (new TouchAction(driver).press(500, 1800).perform().waitAction(200).moveTo(500, 1500)
+      //(new TouchAction(driver).press(200, 1800).perform().waitAction(200).moveTo(500, 1500)
+          .perform()).release().perform();
+      countAux--;
+    } while (countAux > 0);
+    waitForSeconds(1);
   }
 }
