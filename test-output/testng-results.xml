@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="16314" started-at="2023-04-11T03:57:23Z" finished-at="2023-04-11T03:57:40Z">
+  <suite name="Default suite" duration-ms="21657" started-at="2023-04-15T16:57:03Z" finished-at="2023-04-15T16:57:24Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="16314" started-at="2023-04-11T03:57:23Z" finished-at="2023-04-11T03:57:40Z">
+    <test name="Default test" duration-ms="21657" started-at="2023-04-15T16:57:03Z" finished-at="2023-04-15T16:57:24Z">
       <class name="tests.AppTest2">
-        <test-method status="PASS" signature="setUpAppium()[pri:0, instance:tests.AppTest2@166fa74d]" name="setUpAppium" is-config="true" duration-ms="4856" started-at="2023-04-10T23:57:19Z" finished-at="2023-04-10T23:57:23Z">
+        <test-method status="PASS" signature="setUpAppium()[pri:0, instance:tests.AppTest2@166fa74d]" name="setUpAppium" is-config="true" duration-ms="4779" started-at="2023-04-15T12:56:58Z" finished-at="2023-04-15T12:57:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpAppium -->
-        <test-method status="PASS" signature="login()[pri:0, instance:tests.AppTest2@166fa74d]" name="login" duration-ms="9222" started-at="2023-04-10T23:57:23Z" finished-at="2023-04-10T23:57:33Z">
+        <test-method status="PASS" signature="incorrectLogin()[pri:0, instance:tests.AppTest2@166fa74d]" name="incorrectLogin" duration-ms="7843" started-at="2023-04-15T12:57:03Z" finished-at="2023-04-15T12:57:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- incorrectLogin -->
+        <test-method status="PASS" signature="login()[pri:0, instance:tests.AppTest2@166fa74d]" name="login" duration-ms="6848" started-at="2023-04-15T12:57:11Z" finished-at="2023-04-15T12:57:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="products()[pri:0, instance:tests.AppTest2@166fa74d]" name="products" duration-ms="7081" started-at="2023-04-10T23:57:33Z" finished-at="2023-04-10T23:57:40Z">
+        <test-method status="PASS" signature="products()[pri:0, instance:tests.AppTest2@166fa74d]" name="products" duration-ms="6959" started-at="2023-04-15T12:57:17Z" finished-at="2023-04-15T12:57:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- products -->
-        <test-method status="PASS" signature="tearDownAppium()[pri:0, instance:tests.AppTest2@166fa74d]" name="tearDownAppium" is-config="true" duration-ms="154" started-at="2023-04-10T23:57:40Z" finished-at="2023-04-10T23:57:40Z">
+        <test-method status="PASS" signature="tearDownAppium()[pri:0, instance:tests.AppTest2@166fa74d]" name="tearDownAppium" is-config="true" duration-ms="143" started-at="2023-04-15T12:57:24Z" finished-at="2023-04-15T12:57:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownAppium -->
